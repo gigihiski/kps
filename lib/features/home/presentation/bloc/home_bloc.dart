@@ -29,7 +29,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
     yield HomePageLoading();
 
     if (currentIndex == 0) yield DashboardPageLoadedSuccess();
-    if (currentIndex == 1) yield TransactionPageLoadedSuccess();
+    if (currentIndex == 1) yield HistoryPageLoadedSuccess();
     if (currentIndex == 2) yield PurchasePageLoadedSuccess();
     if (currentIndex == 3) yield FavoritePageLoadedSuccess();
     if (currentIndex == 4) yield ProfilePageLoadedSuccess();

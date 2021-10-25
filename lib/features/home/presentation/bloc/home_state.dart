@@ -24,12 +24,12 @@ class DashboardPageLoadedFailed extends HomeState {
   List<Object> get props => [];
 }
 
-class TransactionPageLoadedSuccess extends HomeState {
+class HistoryPageLoadedSuccess extends HomeState {
   @override
   List<Object> get props => [];
 }
 
-class TransactionPageLoadedFailed extends HomeState {
+class HistoryPageLoadedFailed extends HomeState {
   @override
   List<Object> get props => [];
 }

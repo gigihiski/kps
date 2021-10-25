@@ -6,7 +6,7 @@ import 'package:kps/features/profile/presentation/pages/profile_page.dart';
 import 'package:kps/features/purchase/presentation/pages/purchase_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:kps/features/transaction/presentation/pages/transaction_page.dart';
+import 'package:kps/features/history/presentation/pages/history_page.dart';
 
 @immutable
 class HomeBlocBuilder {
@@ -15,9 +15,7 @@ class HomeBlocBuilder {
         color: Constants.backgroundColor,
         child: BlocBuilder<HomeBloc, HomeState>(
             builder: (BuildContext context, HomeState state) {
-          if (state is TransactionPageLoadedSuccess) {
-            return const TransactionPage();
-          }
+          if (state is HistoryPageLoadedSuccess) return const HistoryPage();
           if (state is PurchasePageLoadedSuccess) return const PurchasePage();
           if (state is FavoritePageLoadedSuccess) return const FavoritePage();
           if (state is ProfilePageLoadedSuccess) return const ProfilePage();
@@ -30,6 +28,7 @@ class HomeBlocBuilder {
     return BlocBuilder<HomeBloc, HomeState>(
         builder: (BuildContext context, HomeState state) {
       return BottomNavigationBar(
+          elevation: 0,
           backgroundColor: Constants.backgroundColor,
           selectedItemColor: Colors.black,
           unselectedItemColor: Colors.grey,
