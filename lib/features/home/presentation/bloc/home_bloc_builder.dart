@@ -21,7 +21,7 @@ class HomeBlocBuilder {
           if (state is ProfilePageLoadedSuccess) return const ProfilePage();
           return const DashboardPage();
         }),
-        padding: const EdgeInsets.symmetric(vertical: 5.0, horizontal: 0.0));
+        padding: const EdgeInsets.symmetric(vertical: 0.0, horizontal: 0.0));
   }
 
   static Widget navigation() {

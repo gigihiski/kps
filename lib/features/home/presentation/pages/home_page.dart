@@ -12,8 +12,11 @@ class HomePage extends StatelessWidget {
     return Scaffold(
         body: HomeBlocBuilder.build(),
         floatingActionButton: FloatingActionButton(
+          elevation: 0.0,
           child: const Icon(Icons.qr_code_2_outlined),
           onPressed: () {},
+          shape: const CircleBorder(
+              side: BorderSide(color: Colors.white, width: 4.0)),
         ),
         floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
         bottomNavigationBar: HomeBlocBuilder.navigation());
