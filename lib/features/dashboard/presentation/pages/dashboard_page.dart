@@ -3,6 +3,7 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:kps/core/utils/constants.dart';
+import 'package:kps/features/products/presentation/pages/product_page.dart';
 
 class DashboardPage extends StatelessWidget {
   const DashboardPage({Key? key}) : super(key: key);
@@ -80,21 +81,23 @@ class DashboardPage extends StatelessWidget {
                   vertical: 10.0, horizontal: 25.0)));
     }
 
-    Widget buildPaymentItem(String icon, String title) {
-      return Container(
-        padding: const EdgeInsets.all(5.0),
-        child: Center(
-          child: Column(children: [
-            Image.asset(icon, width: 45.0, height: 45.0),
-            Container(
-                child: Text(title,
-                    textAlign: TextAlign.center,
-                    style:
-                        const TextStyle(fontSize: 12.0, color: Colors.black)),
-                margin: const EdgeInsets.only(top: 5.0))
-          ]),
-        ),
-      );
+    Widget buildPaymentItem(String icon, String title, Function() onPressed) {
+      return GestureDetector(
+          child: Container(
+            padding: const EdgeInsets.all(5.0),
+            child: Center(
+              child: Column(children: [
+                Image.asset(icon, width: 45.0, height: 45.0),
+                Container(
+                    child: Text(title,
+                        textAlign: TextAlign.center,
+                        style: const TextStyle(
+                            fontSize: 12.0, color: Colors.black)),
+                    margin: const EdgeInsets.only(top: 5.0))
+              ]),
+            ),
+          ),
+          onTap: onPressed);
     }
 
     Widget buildPaymentMenu() {
@@ -104,15 +107,23 @@ class DashboardPage extends StatelessWidget {
               crossAxisCount: 4,
               physics: const NeverScrollableScrollPhysics(),
               children: [
-                buildPaymentItem("assets/images/logo.png", "Top Up"),
-                buildPaymentItem("assets/images/logo.png", "Bill"),
-                buildPaymentItem("assets/images/logo.png", "Mobile Data"),
-                buildPaymentItem("assets/images/logo.png", "Invest"),
+                buildPaymentItem("assets/images/logo.png", "Top Up", () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) =>
+                              const ProductPage(title: "Top Up")));
+                }),
+                buildPaymentItem("assets/images/logo.png", "Bill", () {}),
                 buildPaymentItem(
-                    "assets/images/logo.png", "Internet & Cable TV"),
-                buildPaymentItem("assets/images/logo.png", "Credit Card"),
-                buildPaymentItem("assets/images/logo.png", "Protection"),
-                buildPaymentItem("assets/images/logo.png", "More")
+                    "assets/images/logo.png", "Mobile Data", () {}),
+                buildPaymentItem("assets/images/logo.png", "Invest", () {}),
+                buildPaymentItem(
+                    "assets/images/logo.png", "Internet & Cable TV", () {}),
+                buildPaymentItem(
+                    "assets/images/logo.png", "Credit Card", () {}),
+                buildPaymentItem("assets/images/logo.png", "Protection", () {}),
+                buildPaymentItem("assets/images/logo.png", "More", () {})
               ]));
     }
 
