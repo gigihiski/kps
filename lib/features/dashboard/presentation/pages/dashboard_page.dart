@@ -4,6 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:kps/core/utils/constants.dart';
 import 'package:kps/features/products/presentation/pages/product_page.dart';
+import 'package:kps/features/promotion/presentation/pages/promotion_page.dart';
 
 class DashboardPage extends StatelessWidget {
   const DashboardPage({Key? key}) : super(key: key);
@@ -251,9 +252,44 @@ class DashboardPage extends StatelessWidget {
       ]);
     }
 
+    Widget buildPromotionMenuButton() {
+      return Container(
+          width: 105.0,
+          child: ElevatedButton(
+              child: Row(
+                children: const [
+                  Icon(Icons.price_change_rounded,
+                      color: Constants.secondaryColor),
+                  Text("Promo",
+                      style: TextStyle(
+                          fontSize: 13.0,
+                          fontWeight: FontWeight.bold,
+                          color: Constants.secondaryColor))
+                ],
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              ),
+              onPressed: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const PromotionPage()));
+              },
+              style: ButtonStyle(
+                  elevation: MaterialStateProperty.all<double>(0.0),
+                  backgroundColor:
+                      MaterialStateProperty.all<Color>(Colors.white),
+                  shape: MaterialStateProperty.all(RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(18.0),
+                      side: const BorderSide(color: Colors.transparent))))),
+          margin: const EdgeInsets.only(right: 10.0, top: 10.0, bottom: 10.0));
+    }
+
     return Scaffold(
-      appBar:
-          AppBar(title: const Text("KPS"), elevation: 0.0, centerTitle: true),
+      appBar: AppBar(
+          title: const Text("KPS"),
+          elevation: 0.0,
+          centerTitle: true,
+          actions: [buildPromotionMenuButton()]),
       body: CustomScrollView(
         scrollDirection: Axis.vertical,
         slivers: [
