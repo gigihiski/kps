@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1022028656656",
+    "project_id": "kps-app-42f00",
+    "storage_bucket": "kps-app-42f00.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1022028656656:android:5325794cbb153e6b6d5a95",
+        "android_client_info": {
+          "package_name": "com.my.kps.kps_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1022028656656-gdmk4m700ah95icjorpl46foammd92kr.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDST7MufdOnaxlySu5qD0Y83_VC8dWcN2I"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1022028656656-gdmk4m700ah95icjorpl46foammd92kr.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
