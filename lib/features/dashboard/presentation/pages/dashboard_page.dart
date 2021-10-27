@@ -3,6 +3,7 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:kps/core/utils/constants.dart';
+import 'package:kps/features/dashboard/presentation/widgets/bottom_sheet_menu.dart';
 import 'package:kps/features/products/presentation/pages/product_page.dart';
 import 'package:kps/features/promotion/presentation/pages/promotion_page.dart';
 
@@ -13,39 +14,48 @@ class DashboardPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final kpsCard = Container(
-        padding: const EdgeInsets.symmetric(vertical: 20.0, horizontal: 20.0),
-        width: 300.0,
-        child: Column(children: [
-          Text("BALANCE",
-              style: TextStyle(fontSize: 10.0, color: Colors.grey.shade500)),
-          const Text("RM150",
-              style: TextStyle(
-                  fontSize: 30.0,
-                  color: Colors.white,
-                  fontWeight: FontWeight.w600)),
-          Container(
-              child: const Text("Gigih Iski Prasetaywan",
-                  style: TextStyle(fontSize: 17.0, color: Colors.white)),
-              margin: const EdgeInsets.only(top: 20.0)),
-          Container(
-              child: const Text("ID: 123-456-789-abc",
-                  style: TextStyle(
-                      fontSize: 12.0,
-                      color: Colors.grey,
-                      fontWeight: FontWeight.bold)),
-              margin: const EdgeInsets.only(top: 5.0))
-        ], crossAxisAlignment: CrossAxisAlignment.start),
-        decoration: BoxDecoration(
-            color: Constants.secondaryColor.withAlpha(80),
-            borderRadius: const BorderRadius.all(Radius.circular(10))));
+    final kpsCard = GestureDetector(
+        child: Container(
+            padding: const EdgeInsets.symmetric(horizontal: 20.0),
+            width: 300.0,
+            child: Column(
+                children: [
+                  Text("BALANCE",
+                      style: TextStyle(
+                          fontSize: 10.0, color: Colors.grey.shade500)),
+                  const Text("RM150",
+                      style: TextStyle(
+                          fontSize: 30.0,
+                          color: Colors.white,
+                          fontWeight: FontWeight.w600)),
+                  Container(
+                      child: const Text("Gigih Iski Prasetaywan",
+                          style:
+                              TextStyle(fontSize: 17.0, color: Colors.white)),
+                      margin: const EdgeInsets.only(top: 20.0)),
+                  Container(
+                      child: const Text("ID: 123-456-789-abc",
+                          style: TextStyle(
+                              fontSize: 12.0,
+                              color: Colors.grey,
+                              fontWeight: FontWeight.bold)),
+                      margin: const EdgeInsets.only(top: 5.0))
+                ],
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.center),
+            decoration: BoxDecoration(
+                color: Constants.secondaryColor.withAlpha(80),
+                borderRadius: const BorderRadius.all(Radius.circular(10)))),
+        onTap: () {
+          BottomSheetMenu().buildMenuSheet(context);
+        });
 
     Widget buildCardSlider() {
       return Container(
           margin: const EdgeInsets.symmetric(vertical: 20.0),
           child: CarouselSlider(
             options: CarouselOptions(
-              aspectRatio: 2.0,
+              aspectRatio: 2.5,
               enlargeCenterPage: true,
               scrollDirection: Axis.horizontal,
               autoPlay: false,
