@@ -6,6 +6,7 @@ import 'package:kps/core/utils/constants.dart';
 import 'package:kps/features/dashboard/presentation/widgets/bottom_sheet_menu.dart';
 import 'package:kps/features/products/presentation/pages/product_page.dart';
 import 'package:kps/features/promotion/presentation/pages/promotion_page.dart';
+import 'package:kps/features/topup/presentation/pages/topup_page.dart';
 
 class DashboardPage extends StatelessWidget {
   const DashboardPage({Key? key}) : super(key: key);
@@ -64,15 +65,17 @@ class DashboardPage extends StatelessWidget {
           ));
     }
 
-    Widget buildBalanceItem(IconData icon, String title) {
-      return Column(children: [
-        Icon(icon),
-        Container(
-            child: Text(title,
-                style: const TextStyle(
-                    fontSize: 12.0, color: Constants.secondaryColor)),
-            margin: const EdgeInsets.only(top: 5.0))
-      ]);
+    Widget buildBalanceItem(IconData icon, String title, Function() onPressed) {
+      return GestureDetector(
+          child: Column(children: [
+            Icon(icon),
+            Container(
+                child: Text(title,
+                    style: const TextStyle(
+                        fontSize: 12.0, color: Constants.secondaryColor)),
+                margin: const EdgeInsets.only(top: 5.0))
+          ]),
+          onTap: onPressed);
     }
 
     Widget buildBalanceAction() {
@@ -82,9 +85,16 @@ class DashboardPage extends StatelessWidget {
           child: Padding(
               child: Row(
                 children: [
-                  buildBalanceItem(Icons.money_outlined, "Top Up"),
-                  buildBalanceItem(Icons.attach_money_outlined, "Transfer"),
-                  buildBalanceItem(Icons.calendar_today_outlined, "History")
+                  buildBalanceItem(Icons.money_outlined, "Top Up", () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const TopUpPage()));
+                  }),
+                  buildBalanceItem(
+                      Icons.attach_money_outlined, "Transfer", () {}),
+                  buildBalanceItem(
+                      Icons.calendar_today_outlined, "History", () {})
                 ],
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
               ),
